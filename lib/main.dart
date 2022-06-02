@@ -8,8 +8,8 @@ import 'package:recette/recipeListScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // ignore: await_only_futures
-  RecipeBox.init();
+  //BEFOR THIS await RecipeBox.init();
+   RecipeBox.init();
   runApp( MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       //     false,
       //     //favorited count
       //     50),),
-      RecipeListScreen()
+       RecipeListScreen()
     );
   }
 }

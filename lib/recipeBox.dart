@@ -12,9 +12,10 @@ class RecipeBox{
     Hive.init(dir.path);
     Hive.registerAdapter(RecipeAdapter());
     RecipeBox.box=await Hive.openBox("recipeBox");
-    var values = box!.values;
-    if (values == null || values.isEmpty){
-      RecipeBox.box!.putAll(Map.fromIterable(recipes, key: (e) => e.key(), value: (e)=> e));
+    var values = box?.values;
+    // ignore: unnecessary_null_comparison
+    if (values ==null || values.isEmpty){
+      RecipeBox.box?.putAll(Map.fromIterable(recipes, key: (e) => e.key(), value: (e)=> e));
     }
   }
   static final List<Recipe> recipes = [

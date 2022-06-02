@@ -12,6 +12,7 @@ class RecipeListScreen extends StatefulWidget{
   State<StatefulWidget> createState() {
     return RecipeListScreenState();
   }
+  
 }
 
 class RecipeListScreenState extends State<RecipeListScreen> {
@@ -73,30 +74,31 @@ class RecipeListScreenState extends State<RecipeListScreen> {
       ),
 
       body: ValueListenableBuilder(
-        valueListenable: RecipeBox.box!.listenable(),
+        valueListenable: RecipeBox.box.listenable(),
         builder: (context, Box items,_ ) {
           List<String> keys = items.keys.cast<String>().toList();
             return ListView.builder(
-              itemCount: keys?.length,
+              itemCount: keys.length,
               itemBuilder: (context, index){
                 final recipe = items.get(keys)[index];
                 return Dismissible(key: Key(recipe.title),
                     onDismissed: (direction){
                       setState((){
-                        RecipeBox.box!.delete(recipe.key());
+                        RecipeBox.box?.delete(recipe.key());
                       });
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("${recipe.title} Deleted"),));
                     },
-                    background: Container(color: Colors.red),
+                    background: Container(color: Colors.red[500]),
                     child: RecipeItemWidget(recipe: recipe));
               },
             );
 
-          // } else {
+          }
+          // else {
           //   return Center(child: CircularProgressIndicator ());
           // }
-        }
+
       ),
 
       // ListView(
@@ -124,6 +126,7 @@ class RecipeListScreenState extends State<RecipeListScreen> {
       // ),
     );
   }
+
 }
 
 class RecipeItemWidget extends StatelessWidget{
