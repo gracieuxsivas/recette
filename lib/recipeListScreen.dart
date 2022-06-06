@@ -16,6 +16,7 @@ class RecipeListScreen extends StatefulWidget{
 }
 
 class RecipeListScreenState extends State<RecipeListScreen> {
+
   // final List<Recipe> recipes = [
   //   Recipe(
   //     'Pizza facile',
@@ -65,6 +66,9 @@ class RecipeListScreenState extends State<RecipeListScreen> {
 
 
 
+
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -74,9 +78,10 @@ class RecipeListScreenState extends State<RecipeListScreen> {
       ),
 
       body: ValueListenableBuilder(
-        valueListenable: RecipeBox.box.listenable(),
+        valueListenable: RecipeBox.box!.listenable(),
         builder: (context, Box items,_ ) {
           List<String> keys = items.keys.cast<String>().toList();
+          print(keys);
             return ListView.builder(
               itemCount: keys.length,
               itemBuilder: (context, index){

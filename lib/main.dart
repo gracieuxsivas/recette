@@ -9,7 +9,7 @@ import 'package:recette/recipeListScreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //BEFOR THIS await RecipeBox.init();
-   RecipeBox.init();
+  RecipeBox.init();
   runApp( MyApp());
 }
 class MyApp extends StatelessWidget {

@@ -8,6 +8,7 @@ class RecipeBox{
   static Box? box;
   
   static void init() async {
+
     final dir = await getApplicationDocumentsDirectory();
     Hive.init(dir.path);
     Hive.registerAdapter(RecipeAdapter());
@@ -17,6 +18,7 @@ class RecipeBox{
     if (values ==null || values.isEmpty){
       RecipeBox.box?.putAll(Map.fromIterable(recipes, key: (e) => e.key(), value: (e)=> e));
     }
+    print("justin");
   }
   static final List<Recipe> recipes = [
     Recipe(
